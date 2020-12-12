@@ -67,7 +67,7 @@ const desert = ['rattlesnake', 'coyote']
     we would expect the function to return 'Sharknado is the best movie ever!'
 */
 
-//CODE HERE
+const bestMovie = ( movie ) => `${movie} is the best movie ever!`
   
   
 ////////////////////PROBLEM 6////////////////////
@@ -119,6 +119,11 @@ const desert = ['rattlesnake', 'coyote']
 */
 
 //CODE HERE
+for(let key in shapes){
+    if(shapes[key] %2 !==0){
+        delete shapes[key]
+    }
+}
   
   
 ////////////////////PROBLEM 9////////////////////
@@ -160,7 +165,13 @@ const classes = [
     all online classes with no homework.
 */
 
-//CODE HERE
+for(let i = 0; i < classes.length; i++){
+    for(let key in classes[i]){
+        if(classes[i][key] === true){
+            classes[i][key] = false
+        }
+    }
+}
 
   
 ////////////////////PROBLEM 10////////////////////
@@ -193,7 +204,21 @@ let pairsArray = []
     Those values should come from the functions parameters: name, age, breed, tricks (in order).
 */
 
+function Dog(name, age, breed, tricks){
+    this.name = name,
+    this.age =age,
+    this.breed = breed,
+    this.tricks = tricks
+}
+
+/*
+    Invoke your dog constructor passing in 'Fido' for the name, 3 for the age, 
+    'Jack Russell' for the breed, and an array containing the strings 'sit' and 'shake'.
+    Store the result in a variable called 'fido'.
+*/
+
 //CODE HERE
+  const fido = new Dog('Fido', 3, 'Jack Russell', ['sit', 'shake'])
 
 
 /*
@@ -212,7 +237,9 @@ let pairsArray = []
     NAME will come from that context, so you should reference 'this.name' to get the correct name.
 */
 
-//CODE HERE
+function bark(){
+    return `${this.name} says bark!`
+}
 
 
 /*
@@ -220,7 +247,7 @@ let pairsArray = []
     and saving the result to a variable called fidoSpeak.
 */
 
-//CODE HERE
+fidoSpeak = bark.call(fido)
   
   
 ////////////////////PROBLEM 13////////////////////
@@ -231,7 +258,10 @@ let pairsArray = []
     Tricks will come from that context, so you should reference 'this.tricks' to access the correct array.
 */
 
-//CODE HERE
+function teachTrick(trick){
+    this.tricks.push(trick)
+    return this.tricks
+}
 
 
 /*
@@ -239,7 +269,7 @@ let pairsArray = []
     Save the result to a variable called 'teachStay'.
 */
 
-//CODE HERE
+const teachStay = teachTrick.bind(fido, 'stay')
   
   
 ////////////////////PROBLEM 14////////////////////
@@ -251,8 +281,9 @@ let pairsArray = []
 */
 
 //CODE HERE
-
-
+function dogIntro(treat,toy){
+    return `${this.name} is a ${this.breed} that loves ${treat} and their ${toy}!`
+}
 /*
     Invoke the apply method on dogIntro, passing in fido as the context 
     with 'chicken' as the treat and 'tennis ball' as the toy
@@ -260,6 +291,7 @@ let pairsArray = []
 */
 
 //CODE HERE
+const fidoIntro = dogIntro.apply(fido,['chicken','tennis ball'])  
   
 
 ////////////////////PROBLEM 15////////////////////
